@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(236, 231, 238);
+  color: white;
+  scroll-behavior: smooth;
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;
+  font-family: Arial;
+}
+h2 {
+  text-align: center;
+  font-family: Arial;
+}
+
+input[type="text"]{
+  padding: 10px;
+  width: 100%;
+  font-size: 13px;
+  font-family: arial;
+  border: 1px solid #aaaaaa;
+  height: 30px;
+}
+input[type="tel"]{
+  padding: 10px;
+  width: 100%;
+  font-size: 13px;
+  font-family: arial;
+  border: 1px solid #aaaaaa;
+  height: 30px;
+
+}
+input[type="email"]{
+  padding: 10px;
+  width: 100%;
+  font-size: 13px;
+  font-family: arial;
+  border: 1px solid #aaaaaa;
+  height: 30px;
+}
+::-webkit-input-placeholder {
+  font-size: 12px;
+}
+
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #f0e400;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
+}
+.multiselect {
+  width: 300px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+  background-color: white;
+  color: black;
+  padding: 6px;
+  font-size: 12px;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+/*2nd checkbox*/
+#checkboxes2 {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes2 label {
+  display: block;
+}
+
+#checkboxes2 label:hover {
+  background-color: #1e90ff;
+}
+</style>
+  </head>
+  <body>
+    <div class="container" style="background-color:rgb(236, 231, 238);">
+    </div>
+    <div class="container" style="padding-top:10px; background-color:#421359;">
+          <h1 style="font-size:20px; text-align:left; font-weight:lighter;">F1 - First Contact Form for General Enquiries</h1>
+
+    <!-- Contact Form - sent to a Google Sheet -->
+    <form id='foo' action="post" name="foo">
+      <div class="tab">
+    <p><input placeholder="What is your name?..." oninput="this.className = ''" name="name" type="text"></p>
+    <div class="" style="padding-top:4px;">
+
+    </div>
+
+  <p><input id="phone" type="tel" name="phone" placeholder="Enter your 10 digit mobile number? " onblur="mobilefunction()"></p>
+  <p id="mobileerror" style="color:red; font-size:12px;"></p>
+
+  <p><input id="email" type="email" name="email" placeholder="Your Email Id?"> </p>
+  <p id="emailerror" style="color:red;font-size:12px;"></p>
+
+  <p><input id="city" type="text" name="city" placeholder="Your city? "> </p>
+
+  <p><input id="resident" type="text" name="resident" placeholder="Your Residential or Office location? "> </p>
+ <!--select box with multiselect checkbox-->
+
+    <div class="multiselect" style="width:100%;">
+    <div class="selectBox" onclick="showCheckboxes()">
+      <select style="font-size:12px;padding:6px;">
+        <option>How can we help you?</option>
+      </select>
+      <div class="overSelect"></div>
+    </div>
+    <div id="checkboxes">
+
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="I Need Job"/>I Need Job<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="I Need Job Counselling"/>I Need Job Counselling<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="We Need Accountant"/>We Need Accountant<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="I Need Skill Development Coaching"/>I Need Skill Development Coaching <br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="I Need Free Tally Training"/>I Need Books<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="I Need Free GST Training"/>I Need Free GST Training<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="I Need GENESIS Skill Certifications"/>I Need GENESIS Skill Certifications<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="I Need GENESIS Designation Badges"/>I Need GENESIS Designation Badges<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="I Need GENESIS Self-Employment Licence"/>I Need GENESIS Self-Employment Licence<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="School and College Partnership"/>School and College Partnership<br>
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="I Need Tally and Tax Software"/>I Need Tally and Tax Software<br>
+        <label>Other:</label> <input type="text" id="helps" name="helps">
+
+    </div><br>
+    <textarea name="comments" rows="1" style="font-size:12px; padding:10px; width:100%;" placeholder="Any Specific Message"></textarea>
+  </div><br>
+
+  </div>
+  <br>
+<p id="formerror" style="color:red;font-size:12px;"></p>
+
+<!---->
+<div class="tab">
+  <h2 style="font-face:arial; font-size:30px; padding-top:280px;">Click on the Sumbit button to send us your details</h1>
+
+</div>
+<div class="tab">
+  <h1 style="font-face:arial; font-size:30px; padding-top:280px;">Thank you for your details. Our Admission officer will contact you soon. Feel Free to call <a href="tel:1800 425 8070"> 1800 425 8070</a> for clarifications</h1>
+
+</div>
+
+<!---->
+  <div style="overflow:auto;">
+    <div style="float:right; padding-top:10px;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)"  style="background-color:#FE344F">Previous</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)" style="background-color:#343AFE">Next</button>
+       <button id="submit" type='submit' onclick="submits(1);">Submit</button>
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step" style="display:none;"></span>
+
+
+  </div>
+
+    </form>
+  </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Custom Theme JavaScript -->
+  <script src='google-script.js'></script>
+  <script src='extra-scripts.js'></script>
+
+
+</html>
